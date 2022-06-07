@@ -28,11 +28,10 @@ USER root
 
 EXPOSE 8888
 ENTRYPOINT ["tini", "-g", "--"]
+CMD ["start-notebook.sh"]
 
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
 
-CMD bash
-
-CMD jupyter lab --ip=* --port=$SERVER_PORT --no-browser --notebook-dir=$HOME --allow-root
+# CMD jupyter lab --ip=* --port=$SERVER_PORT --no-browser --notebook-dir=$HOME --allow-root
