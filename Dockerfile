@@ -9,5 +9,5 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN dotnet tool install -g Microsoft.dotnet-interactive
+RUN  /root/.dotnet/tools/dotnet-interactive jupyter install
 WORKDIR ${HOME}
