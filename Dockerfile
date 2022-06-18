@@ -8,4 +8,6 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
+
+RUN dotnet tool install -g Microsoft.dotnet-interactive
 WORKDIR ${HOME}
