@@ -11,8 +11,19 @@ ENV HOME /home/${NB_USER}
 WORKDIR ${HOME}
 
 USER root
+
 RUN apt-get update
 RUN apt-get install -y curl
+RUN apt-get install -y git
+RUN conda remove nodejs
+RUN apt-get purge --auto-remove nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
+RUN apt-get install -y nodejs
+RUN apt-get install -y build-essential checkinstall
+RUN npm install -g node-gyp
+RUN npm install -g --unsafe-perm ijavascript
+RUN ijsinstall --install=global
+
 
 ENV \
   # Enable detection of running in a container
@@ -92,6 +103,7 @@ RUN dotnet interactive jupyter install
 
 # Enable telemetry once we install jupyter for the image
 ENV DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=false
+
 
 # Set root to Notebooks
 WORKDIR ${HOME}/Notebooks/
